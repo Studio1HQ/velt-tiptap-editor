@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Avatar } from "@/components/ui/avatar";
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import {
   Archive,
@@ -15,10 +14,8 @@ import {
   File,
   Inbox,
   MailPlus,
-  MessageSquare,
   MoreHorizontal,
   PlaneIcon as PaperPlane,
-  Plus,
   Search,
   Send,
   Star,
@@ -26,7 +23,7 @@ import {
 } from "lucide-react";
 
 export default function EmailEditor() {
-  const [recipients, setRecipients] = useState<string[]>(["alex@example.com"]);
+  const [recipients] = useState<string[]>(["alex@example.com"]);
   const [subject, setSubject] = useState<string>("");
 
   return (

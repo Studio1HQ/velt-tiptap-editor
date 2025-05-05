@@ -14,11 +14,11 @@ export default function YourAuthComponent() {
   };
 
   // Fetch user data from user service
-  let yourAuthenticatedUser = userService();
+  const yourAuthenticatedUser = userService();
   const { uid, displayName, email, photoURL } = yourAuthenticatedUser;
 
   // Create the Velt user object
-  let veltUser = {
+  const veltUser = {
     userId: uid,
     name: displayName,
     email: email,
@@ -29,7 +29,7 @@ export default function YourAuthComponent() {
   //identify Velt user
   useIdentify(veltUser);
 
-  let [user, setUser] = useState(veltUser);
+  const [user] = useState(veltUser);
 
   return <div>User: {user?.userId}</div>;
 }

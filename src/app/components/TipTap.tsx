@@ -37,7 +37,7 @@ export default function TipTap() {
     },
   });
 
-  const [isEditable, setIsEditable] = useState(true);
+  const [ isEditable ] = useState(true);
 
   useEffect(() => {
     if (editor && commentAnnotations?.length) {
