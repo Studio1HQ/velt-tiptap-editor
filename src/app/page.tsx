@@ -1,6 +1,6 @@
 "use client";
 
-import { VeltProvider, VeltComments } from "@veltdev/react";
+import { VeltProvider, VeltComments, VeltPresence } from "@veltdev/react";
 import YourAuthComponent from "./YourAuthComponent";
 import EmailEditor from "./components/EmailEditor";
 
@@ -12,6 +12,7 @@ export default function App() {
         <EmailEditor />
       </div>
       <VeltComments textMode={false} />
+      <VeltPresence />
     </VeltProvider>
   );
 }

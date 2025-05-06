@@ -16,7 +16,7 @@ export default function TipTap() {
   const commentAnnotations = useCommentAnnotations();
   useSetDocumentId("my-document-id");
 
-  const [content, setContent] = useState("<p className='py-4 px-2.5'>Hello, start typing here...</p>");
+  const [content, setContent] = useState("<p>Start writing here</p>");
 
   const editor = useEditor({
     extensions: [
