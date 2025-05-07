@@ -1,7 +1,7 @@
 "use client";
 
 import { BubbleMenu, Editor } from "@tiptap/react";
-import { MessageCircleCode } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import React from "react";
 import { triggerAddComment } from "@veltdev/tiptap-velt-comments";
 
@@ -19,8 +19,8 @@ function BubbleMenuComponent({ editor }: { editor: Editor | null }) {
   return (
     <div>
       <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
-        <button className="cursor-pointer" onClick={handleAddComment}>
-          <MessageCircleCode size={20} />
+        <button className="cursor-pointer rounded-full bg-purple-400 p-2" onClick={handleAddComment}>
+          <MessageSquare size={25} className="border-none outline-0 text-white object-center" />
         </button>
       </BubbleMenu>
     </div>

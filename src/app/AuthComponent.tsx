@@ -41,9 +41,11 @@ export default function AuthComponent() {
   };
 
   // Initialize with predefined users
-  const [users] = useState<User[]>(generateUsers());
-  const [currentUser, setCurrentUser] = useState<User>(users[1]); // Start with Jane Smith
-
+  const [users, setUsers] = useState<User[]>(generateUsers());
+  const [currentUser, setCurrentUser] = useState<User>(
+    users.find((user) => user.isActive) || users[0]
+  );
+  
   // Create the Velt user object from the current user
   const veltUser = {
     userId: currentUser.uid,
@@ -60,9 +62,17 @@ export default function AuthComponent() {
   useIdentify(veltUser);
 
   // Handle user switching
-  const handleUserChange = (user: User) => {
-    console.log("Switching to user:", user.displayName);
-    setCurrentUser({ ...user });
+  const handleUserChange = (selectedUser: User) => {
+    console.log("Switching to user:", selectedUser.displayName);
+    // Update all users - set isActive to true for selected user, false for others
+    const updatedUsers = users.map((user) => ({
+      ...user,
+      isActive: user.uid === selectedUser.uid,
+    }));
+
+    // Update both states
+    setUsers(updatedUsers);
+    setCurrentUser({ ...selectedUser, isActive: true });
   };
 
   return (
