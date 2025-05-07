@@ -21,13 +21,18 @@ import {
   Star,
   Trash,
 } from "lucide-react";
+import { VeltCommentTool, VeltSidebarButton } from "@veltdev/react";
+// import UserSelect from "../UserSelect";
+// import UserSwitcher from "../UserSelect";
+import AuthComponent from "../AuthComponent";
+import DeleteCommentsButton from "./delete-comments-button";
 
 export default function EmailEditor() {
   const [recipients] = useState<string[]>(["alex@example.com"]);
   const [subject, setSubject] = useState<string>("");
 
   return (
-    <div className="flex h-screen overflow-hidden bg-white">
+    <div className="relative flex h-screen overflow-hidden bg-white">
       {/* Sidebar */}
       <div className="hidden md:flex w-64 flex-col bg-slate-50 border-r border-slate-200">
         <div className="p-4">
@@ -199,6 +204,14 @@ export default function EmailEditor() {
         <div className="flex-1 overflow-auto">
           <div className="mx-auto max-w-4xl p-4">
             <TipTap />
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="absolute bottom-2.5 bg-gray-800 w-fit py-1 px-1.5 rounded-full flex items-center justify-around gap-2">
+              <VeltSidebarButton title="View all comments" aria-label="View all comments" />
+              <VeltCommentTool title="Add a comment" aria-label="Add a comment" />
+              <AuthComponent />
+              <DeleteCommentsButton />
+            </div>
           </div>
         </div>
       </div>

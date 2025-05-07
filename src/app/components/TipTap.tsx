@@ -16,7 +16,9 @@ export default function TipTap() {
   const commentAnnotations = useCommentAnnotations();
   useSetDocumentId("my-document-id");
 
-  const [content, setContent] = useState("<p>Start writing here</p>");
+  const [content, setContent] = useState(
+    "<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores atque non amet numquam optio aliquid quo laboriosam pariatur ipsa voluptatem similique assumenda cum, quia consectetur expedita est voluptatum? Accusamus, nobis.</p>"
+  );
 
   const editor = useEditor({
     extensions: [
@@ -37,7 +39,7 @@ export default function TipTap() {
     },
   });
 
-  const [ isEditable ] = useState(true);
+  const [isEditable] = useState(true);
 
   useEffect(() => {
     if (editor && commentAnnotations?.length) {
@@ -46,6 +48,7 @@ export default function TipTap() {
       highlightComments(editor, commentAnnotations);
     }
   }, [editor, commentAnnotations, isEditable]);
+  
   return (
     <div className="flex flex-col space-y-4">
       <TipTapToolbar editor={editor} />
