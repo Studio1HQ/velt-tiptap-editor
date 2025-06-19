@@ -10,12 +10,12 @@ import TipTapToolbar from "./TipTapToolbar";
 import { TiptapVeltComments } from "@veltdev/tiptap-velt-comments";
 import BubbleMenuComponent from "./BubbleMenu";
 import { highlightComments } from "@veltdev/tiptap-velt-comments";
-import { useCommentAnnotations, useSetDocumentId } from "@veltdev/react";
+import { useCommentAnnotations, useVeltClient } from "@veltdev/react";
 
 export default function TipTap() {
   const commentAnnotations = useCommentAnnotations();
-  useSetDocumentId("my-document-id");
-
+  const {client} = useVeltClient();
+  
   const [content, setContent] = useState(
     "<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores atque non amet numquam optio aliquid quo laboriosam pariatur ipsa voluptatem similique assumenda cum, quia consectetur expedita est voluptatum? Accusamus, nobis.</p>"
   );
@@ -38,16 +38,20 @@ export default function TipTap() {
       setContent(editor.getHTML());
     },
   });
-
+  
   const [isEditable] = useState(true);
-
+  
   useEffect(() => {
+    // useSetDocumentId("my-document-id");
+    if(client) {
+      client.setDocument("my-document-id", {documentName: "My document name"});
+    }
     if (editor && commentAnnotations?.length) {
       editor.setEditable(isEditable);
-
+      
       highlightComments(editor, commentAnnotations);
     }
-  }, [editor, commentAnnotations, isEditable]);
+  }, [editor, commentAnnotations, isEditable, client]);
   
   return (
     <div className="flex flex-col space-y-4">

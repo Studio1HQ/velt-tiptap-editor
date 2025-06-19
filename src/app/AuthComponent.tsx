@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useIdentify } from "@veltdev/react";
+import { useIdentify, useVeltClient } from "@veltdev/react";
 import UserSwitcher from "./UserSelect";
 
 interface User {
@@ -40,12 +40,28 @@ export default function AuthComponent() {
     ];
   };
 
-  // Initialize with predefined users
   const [users, setUsers] = useState<User[]>(generateUsers());
   const [currentUser, setCurrentUser] = useState<User>(
     users.find((user) => user.isActive) || users[0]
   );
-  
+
+  const { client } = useVeltClient();
+
+  // const contactElement = useContactUtils();
+  const contactElement = client?.getContactElement();
+
+  contactElement?.updateContactList(
+    users.map((user) => ({
+      userId: user.uid,
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      organizationId: "my-organization",
+    }))
+  );
+
+  // Initialize with predefined users
+
   // Create the Velt user object from the current user
   const veltUser = {
     userId: currentUser.uid,
@@ -57,6 +73,7 @@ export default function AuthComponent() {
 
   console.log("Velt user object:", veltUser);
   console.log("Current user:", currentUser);
+  console.log("All users:", users);
 
   // Identify the current user with Velt
   useIdentify(veltUser);
