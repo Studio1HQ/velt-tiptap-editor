@@ -23,7 +23,6 @@ import {
   List,
   ListOrdered,
   Paperclip,
-  BellRing,
 } from "lucide-react";
 import { triggerAddComment } from "@veltdev/tiptap-velt-comments";
 import { VeltNotificationsTool } from "@veltdev/react";
