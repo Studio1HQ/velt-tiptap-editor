@@ -25,7 +25,6 @@ import {
   Paperclip,
 } from "lucide-react";
 import { triggerAddComment } from "@veltdev/tiptap-velt-comments";
-import { VeltNotificationsTool } from "@veltdev/react";
 
 interface EditorToolbarProps {
   editor: Editor | null;
@@ -242,7 +241,6 @@ export default function EditorToolbar({ editor }: EditorToolbarProps) {
       {/* <Button className="hover:bg-gray-500 cursor-pointer duration-200">
         <BellRing size={15} color="#fff" />
       </Button> */}
-      <VeltNotificationsTool />
     </div>
   );
 }

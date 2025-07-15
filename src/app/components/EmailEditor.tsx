@@ -21,7 +21,7 @@ import {
   Star,
   Trash,
 } from "lucide-react";
-import { VeltCommentTool, VeltSidebarButton } from "@veltdev/react";
+import { VeltCommentTool, VeltNotificationsTool, VeltSidebarButton } from "@veltdev/react";
 // import UserSelect from "../UserSelect";
 // import UserSwitcher from "../UserSelect";
 import AuthComponent from "../AuthComponent";
@@ -151,6 +151,9 @@ export default function EmailEditor() {
               New Message
             </h1>
             <div className="flex items-center gap-2">
+              <div className="bg-gray-50 flex justify-center items-center rounded-lg p-0.5 w-fit">
+                <VeltNotificationsTool variant="primary" />
+              </div>
               <Button variant="outline" size="sm">
                 <Clock size={16} className="mr-1" /> Save Draft
               </Button>
